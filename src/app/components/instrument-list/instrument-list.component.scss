@@ -1,0 +1,35 @@
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    align-items: center;
+    text-transform: uppercase;
+    button{
+        width: 30px;
+        font-size: 30px;
+        height: 30px;
+        padding: 0;
+        margin: 0;
+        line-height: 30px;
+    }
+}
+.sorting{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    background: #e6e6e6;
+   
+    button{
+        background: transparent;
+        border:none;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #303030;
+    }
+}
+.grouped{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}

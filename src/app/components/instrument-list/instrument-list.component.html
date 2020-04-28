@@ -1,0 +1,33 @@
+<div class="header">
+    <div>
+        <h1>
+            My watch list
+
+        </h1>
+    </div>
+    <button (click)="randomize()">
+        &#9881;
+    </button>
+</div>
+    <div class="sorting">
+
+        <button (click)="sortBy('name')">
+            market
+        </button>
+        <div class="grouped">
+            
+            <button (click)="sortBy('currentPrice')">
+                sell
+            </button>
+            <button (click)="sortBy('currentPrice')">
+                buy
+            </button>
+        </div>
+        <!-- according to the assignment there is no separate buy/sell price
+            or they connected to current price so sorting order could not be different  -->
+        </div>
+
+<app-instrument-card *ngFor="let instrument of stockRepo.stocks$|async" 
+[instrument]='instrument'
+(action)="stockRepo.addTransaction($event)"
+></app-instrument-card>

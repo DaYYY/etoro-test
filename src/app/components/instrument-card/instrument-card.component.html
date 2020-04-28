@@ -1,0 +1,27 @@
+<div class="details">
+
+    <div class="image-container">
+        <img [src]="instrument?.img">
+    </div>
+    <div class="text-details">
+
+        <h6>
+            {{instrument?.name}}
+        </h6>
+        <p [ngClass]="{
+            'rising':rising,
+            'falling':falling
+        }">
+            {{instrument?.currentPrice|number:'1.2-4'}}
+            ({{(instrument?.currentPrice-instrument?.openPrice)/instrument?.openPrice|percent: '1.1-3'}})
+        </p>
+    </div>
+</div>
+
+<div class="actions" [ngClass]="{
+    'rising':rising,
+    'falling':falling
+}">
+    <button  (click)="buy()"> {{instrument?.currentPrice+0.02|number:'1.2-4'}}</button>
+    <button  (click)="sell()"> {{instrument?.currentPrice-0.02|number:'1.2-4'}}</button>
+</div>
