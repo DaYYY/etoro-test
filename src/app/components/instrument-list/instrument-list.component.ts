@@ -34,6 +34,6 @@ export class InstrumentListComponent {
     });
   }
   buy(item: Instrument) {
-    this.stockRepo.addTransaction({ name: item.name, price: item.currentPrice + 0.02, type: ActionType.Buy })
+    this.stockRepo.addTransaction({ name: item.name, price: item.currentPrice + 0.02, type: ActionType.Buy });
   }
 }
