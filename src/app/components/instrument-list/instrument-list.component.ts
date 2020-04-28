@@ -3,6 +3,8 @@ import { StockRepoService } from 'src/app/services/stock-repo.service';
 import { UpdaterService } from 'src/app/services/updater.service';
 import { take } from 'rxjs/operators';
 import { Instrument } from 'src/app/interfaces/instrument.interface';
+import { ActionType } from 'src/app/interfaces/stockAction.interface';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-instrument-list',
@@ -31,5 +33,7 @@ export class InstrumentListComponent {
       this.stockRepo.setOrder(name);
     });
   }
-
+  buy(item: Instrument) {
+    this.stockRepo.addTransaction({ name: item.name, price: item.currentPrice + 0.02, type: ActionType.Buy })
+  }
 }

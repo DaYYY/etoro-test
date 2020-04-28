@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Instrument } from '../interfaces/instrument.interface';
 import { StockAction } from '../interfaces/stockAction.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 
 @Injectable({
@@ -78,6 +79,10 @@ export class StockRepoService {
 
   updatePrice(index: number, change: number) {
     const forChange = this.stockList[index];
+    if (!forChange) {
+      console.error('no elements');
+      return;
+    }
     this.stockList.splice(index, 1, { ...forChange, currentPrice: forChange.currentPrice + change });
     this.updateList(this.stockList);
   }
@@ -92,5 +97,14 @@ export class StockRepoService {
   }
   setOrder(order: keyof Instrument) {
     this.order = order;
+  }
+  delete(n: number) {
+    this.stockList.splice(n, 1);
+    this.stockSubject$.next(this.stockList);
+  }
+  moveItem(event: CdkDragDrop<Instrument[]>) {
+    moveItemInArray(this.stockList, event.previousIndex, event.currentIndex);
+    this.order = null;
+    this.stockSubject$.next(this.stockList);
   }
 }

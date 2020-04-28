@@ -27,7 +27,12 @@
             or they connected to current price so sorting order could not be different  -->
         </div>
 
-<app-instrument-card *ngFor="let instrument of stockRepo.stocks$|async" 
-[instrument]='instrument'
-(action)="stockRepo.addTransaction($event)"
-></app-instrument-card>
+        <div >
+            <app-instrument-card *ngFor="let instrument of stockRepo.stocks$|async;let i = index" 
+                [instrument]='instrument'
+                (action)="stockRepo.addTransaction($event)"
+                (swipeLeft)="stockRepo.delete(i)"
+                (swipeRight)="buy(instrument)"
+                
+            ></app-instrument-card>
+        </div>

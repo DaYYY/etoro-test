@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InstrumentListComponent } from './components/instrument-list/instrument-list.component';
 import { InstrumentCardComponent } from './components/instrument-card/instrument-card.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { InstrumentCardComponent } from './components/instrument-card/instrument
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
